@@ -1,0 +1,15 @@
+.elements__like {
+  box-sizing: border-box;
+  margin: 0 0 0.18rem;
+  padding: 0;
+  height: 19px;
+  min-width: 22px;
+  background-color: #fff;
+  border: none;
+  background-image: url(../../../img/rating.svg);
+}
+
+.elements__like:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

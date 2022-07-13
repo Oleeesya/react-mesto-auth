@@ -1,0 +1,17 @@
+.elements {
+  box-sizing: border-box;
+  margin: 46.25px auto 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, max-content));
+  gap: 20px 17px;
+}
+
+@media(max-width: 880px) {
+  .elements {
+    grid-template-columns: 1fr;
+    gap: 20px 0;
+    margin-top: 36px;
+    justify-items: center;
+  }
+}
