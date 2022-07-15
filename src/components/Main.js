@@ -1,12 +1,18 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import Card from "./Card";
 import { currentUserContext } from '../contexts/CurrentUserContext';
+import Header from './Header'
 
 function Main(props) {
     const currentUser = React.useContext(currentUserContext);
+    const [email, setEmail] = useState('');
 
     return (
         <>
+        <Header title="Выйти">
+            <span>{email}</span>
+        </Header>
             <section className="profile">
                 <div className="profile__info">
                     <div className="profile__avatar" onClick={props.onEditAvatar}>

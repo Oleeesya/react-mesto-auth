@@ -1,0 +1,12 @@
+.register__link {
+  padding: 0.722rem 4.8rem;
+  font-size: 1.1rem;
+  border-radius: 0.12rem;
+  max-width: 358px;
+}
+
+@media(max-width: 880px) {
+  .register__link {
+    padding: 0.603rem 1.903rem;
+  }
+}

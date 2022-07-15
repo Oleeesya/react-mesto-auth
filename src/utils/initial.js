@@ -2,11 +2,11 @@
 // вебпак добавит в переменные правильные пути
 const arkhyz = new URL('../img/arkhyz.jpg', import.meta.url);
 const moscow = new URL('../img/Moscow.jpg', import.meta.url);
-const rostov = new URL('../img/Rostov-region.jpg', import.meta.url)
+const rostov = new URL('../img/Rostov-region.jpg', import.meta.url);
 
 const saintpetersburg = new URL('../img/Saint-Petersburg.jpg', import.meta.url);
 const chelyabinskoblast = new URL('../img/chelyabinsk-oblast.jpg', import.meta.url);
-const baikal = new URL('../img/baikal.jpg', import.meta.url)
+const baikal = new URL('../img/baikal.jpg', import.meta.url);
 
 export const initialCards = [
     {

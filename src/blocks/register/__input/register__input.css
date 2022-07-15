@@ -1,0 +1,13 @@
+.register__input {
+  width: 100%;
+  padding: 0 0 0.8rem 0;
+  margin: 0;
+  outline: none;
+  background-color: black;
+  border: none;
+  border-bottom: 2px solid #CCCCCC;
+  color: #fff;
+}
+
+.register__input::-webkit-input-placeholder {color:#CCCCCC;}
+.register__input::-moz-placeholder {color:#CCCCCC;}

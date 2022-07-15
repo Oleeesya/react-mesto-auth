@@ -1,0 +1,16 @@
+.register-login__btn {
+  font-size: 0.83rem;
+  line-height: 1rem;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #000;
+  position: absolute;
+  bottom: -2.12rem;
+  padding: 0;
+  border: none;
+}
+
+.register-login__btn:not([disabled]):hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

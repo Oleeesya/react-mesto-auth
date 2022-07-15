@@ -1,0 +1,11 @@
+.register {
+  box-sizing: border-box;
+  max-width: 21.059rem;
+  margin: 3.5rem auto 6.6rem;
+}
+
+@media(max-width: 880px) {
+  .register {
+    max-width: 15.295rem;
+  }
+}

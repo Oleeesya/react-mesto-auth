@@ -1,0 +1,14 @@
+.header__btn {
+    font-size: 1.06rem;
+    line-height: 1.3rem;
+    color: #FFFFFF;
+    padding: 0;
+    border: none;
+    background-color: #000;
+    margin-left: 1.4rem;
+}
+
+.header__btn:not([disabled]):hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

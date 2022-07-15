@@ -1,0 +1,9 @@
+.popup__paragraph-tooltip {
+  font-weight: 900;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  text-align: center;
+  color: #000000;
+  max-width: 358px;
+  margin: 1.9rem 0 3.53rem;
+}
