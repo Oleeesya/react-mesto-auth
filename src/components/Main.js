@@ -11,7 +11,7 @@ function Main(props) {
     return (
         <>
         <Header title="Выйти">
-            <span>{email}</span>
+            <span>{email}dgdfgfd</span>
         </Header>
             <section className="profile">
                 <div className="profile__info">

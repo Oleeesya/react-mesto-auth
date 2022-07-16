@@ -150,7 +150,7 @@ function App() {
           <div className="page">
             {/* <Header /> */}
 
-            {loggedIn && <Main onEditAvatar={handleClickAvatar} onEditProfile={handleClickProfile} onAddPlace={handleClickPlace}
+            {!loggedIn && <Main onEditAvatar={handleClickAvatar} onEditProfile={handleClickProfile} onAddPlace={handleClickPlace}
               onCardClick={handleCardClick} openDeleteClick={handleDeleteCardClick} cards={cards} onCardLike={handleCardLike}
             />}
 

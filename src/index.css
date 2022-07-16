@@ -3,9 +3,16 @@
 @import url(./blocks/app/app.css);
 @import url(./blocks/page/page.css);
 @import url(./blocks/header/header.css);
+@import url(./blocks/header/_status/header_status_mobile.css);
 @import url(./blocks/header/__logo/header__logo.css);
 @import url(./blocks/header/__btn/header__btn.css);
 @import url(./blocks/header/__btn/_recorded/hedaer__btn_recorded.css);
+@import url(./blocks/header/__menu/header__menu.css);
+@import url(./blocks/header/_status/header_status_mobile.css);
+@import url(./blocks/header/__menu-mobile/header__menu-mobile.css);
+@import url(./blocks/header/__menu-mobile/_status/header__meni-mobile_status_close.css);
+@import url(./blocks/header/__menu-mobile/_status/header__menu-mobile_status_opened.css);
+@import url(./blocks/header/__menu/_status/header__menu_status_mobile.css);
 @import url(./blocks/profile/profile.css);
 @import url(./blocks/profile/__avatar/profile__avatar.css);
 @import url(./blocks/profile/__img/profile__img.css);

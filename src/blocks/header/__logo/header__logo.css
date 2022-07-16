@@ -9,8 +9,6 @@
 
 @media(max-width: 880px) {
   .header__logo {
-    margin-bottom: 31.6px;
-    margin-left: 27px;
     width: 103.74px;
     height: 24.4px;
   }

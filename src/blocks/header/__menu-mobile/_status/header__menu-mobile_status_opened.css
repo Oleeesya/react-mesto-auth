@@ -1,0 +1,34 @@
+.header__menu-mobile_status_opened {
+  border: 0;
+  padding: 0;
+}
+
+.header__menu-mobile_status_opened::after,
+.header__menu-mobile_status_opened::before {
+  content: "";
+  position: absolute;
+  top: 18%;
+  right: 0;
+  width: 10%;
+  height: 3px;
+  transform: rotate(45deg);
+  background-color: #fff;
+  box-shadow: none;
+}
+
+.header__menu-mobile_status_opened::after,
+.header__menu-mobile_status_opened::before {
+  content: "";
+  position: absolute;
+  top: 18%;
+  right: 0;
+  width: 10%;
+  height: 3px;
+  transform: rotate(45deg);
+  background-color: #fff;
+  box-shadow: none;
+}
+
+.header__menu-mobile_status_opened::before {
+    transform: rotate(-45deg);
+}

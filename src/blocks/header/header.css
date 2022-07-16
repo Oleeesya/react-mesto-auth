@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   box-sizing: border-box;
   margin: 45px auto 0;
   padding: 0 0 2.4rem 0;
