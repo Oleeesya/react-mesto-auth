@@ -6,7 +6,7 @@ import { Link, Withrouter } from 'react-router-dom';
 // import * as form '../auth.js';
 
 function Login(props) {
-    const [email, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     // handleChange = (e) => {
@@ -59,9 +59,9 @@ function Login(props) {
             </Header>
             <PopupWithForm name="login" title="Вход" onSubmit={handleSubmit} buttonText="Войти">
                 <input className="account__input" required id="email" name="email" type="text" placeholder="Email"
-                    value={email} />
+                    value={email} onChange={({ target }) => setEmail(target.value)} />
                 <input className="account__input" required id="password" name="password" type="password" placeholder="Пароль"
-                    value={password} />
+                    value={password} onChange={({ target }) => setPassword(target.value)} />
             </PopupWithForm>
         </>
     )

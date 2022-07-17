@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import api from "../utils/API";
 import Header from './Header';
 import Main from './Main';
@@ -25,12 +25,16 @@ function App() {
   const [cards, setCards] = useState([]);
 
   const [selectedCard, setSelectCard] = useState(null);
+  const [isTooltip, setTooltip] = React.useState(false);
+  const [isRegistrationStatus, setRegistrationStatus] = React.useState(false);
+
   const [currentUser, setCurrentUser] = useState({});
 
   const [currentCard, setcurrentCard] = React.useState('');
 
   const [loggedIn, setloggedIn] = useState(false);
 
+  const history = useHistory();
 
   const setCardId = (cardInfo) => {
     setcurrentCard(cardInfo);
@@ -46,8 +50,18 @@ function App() {
       })
   }, [])
 
+  useEffect(() => {
+    if(loggedIn) {
+      history.push('/');
+    }
+  }, [loggedIn])
+
   const handleClickAvatar = () => {
     setEditAvatarPopupOpen(true);
+  }
+
+  const handleRegistrationStatus = () => {
+    setRegistrationStatus(true);
   }
 
   const handleClickProfile = () => {
@@ -62,6 +76,10 @@ function App() {
     setSelectCard(link);
   }
 
+  const handleTooltip = () => {
+    setTooltip(true);
+  }
+
   const handleDeleteCardClick = (id) => {
     setCardId(id)
     setDeletePlacePopupOpen(true);
@@ -73,6 +91,7 @@ function App() {
     setEditAvatarPopupOpen(false);
     setDeletePlacePopupOpen(false);
     setSelectCard(null);
+    setTooltip(false);
   }
 
   const handleUpdateUser = (userInfo) => {
@@ -150,7 +169,7 @@ function App() {
           <div className="page">
             {/* <Header /> */}
 
-            {!loggedIn && <Main onEditAvatar={handleClickAvatar} onEditProfile={handleClickProfile} onAddPlace={handleClickPlace}
+            {loggedIn && <Main onEditAvatar={handleClickAvatar} onEditProfile={handleClickProfile} onAddPlace={handleClickPlace}
               onCardClick={handleCardClick} openDeleteClick={handleDeleteCardClick} cards={cards} onCardLike={handleCardLike}
             />}
 
@@ -166,13 +185,15 @@ function App() {
                 component={Login}
               /> */}
               <Route path="/sign-in">
-                <Login />
+                <Login onClose={closeAllPopups} handleOpenTooltip={handleTooltip} isTooltip={isTooltip}
+                handleRegistrationStatus={handleRegistrationStatus} isRegistrationStatus={isRegistrationStatus} />
               </Route>
               <Route path="/sign-up">
-                <Register />
+                <Register onClose={closeAllPopups} handleOpenTooltip={handleTooltip} isTooltip={isTooltip}
+                 handleRegistrationStatus={handleRegistrationStatus} isRegistrationStatus={isRegistrationStatus} />
               </Route>
               <Route exact path="/">
-                {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+                {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-up" />}
               </Route>
             </Switch>
 
