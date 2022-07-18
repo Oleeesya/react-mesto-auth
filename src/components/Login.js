@@ -24,7 +24,7 @@ function Login(props) {
                     setEmail();
                     setPassword();
                     props.handleLogin(true);
-                    history.push('/');
+                    history.push('/react-mesto-auth');
                 }
             })
             .catch((err) => {

@@ -50,7 +50,7 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      history.push('/');
+      history.push('/react-mesto-auth');
     }
   }, [loggedIn])
 
