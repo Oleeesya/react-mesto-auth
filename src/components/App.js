@@ -10,6 +10,7 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import DeletePlacePopup from "./DeletePlacePopup";
 import Login from './Login';
 import Register from './Register';
+import * as auth from '../utils/Auth.js';
 
 import AddPlacePopup from "./AddPlacePopup";
 import ImagePopup from "./ImagePopup";
@@ -23,22 +24,19 @@ function App() {
   const [isDeletePlacePopupOpen, setDeletePlacePopupOpen] = useState(false);
 
   const [cards, setCards] = useState([]);
-
   const [selectedCard, setSelectCard] = useState(null);
+
   const [isTooltip, setTooltip] = React.useState(false);
   const [isRegistrationStatus, setRegistrationStatus] = React.useState(false);
+  const [email, setEmail] = useState('');
 
   const [currentUser, setCurrentUser] = useState({});
-
   const [currentCard, setcurrentCard] = React.useState('');
 
   const [loggedIn, setloggedIn] = useState(false);
+  const [token, setToken] = useState('');
 
   const history = useHistory();
-
-  const setCardId = (cardInfo) => {
-    setcurrentCard(cardInfo);
-  }
 
   useEffect(() => {
     api.getUserInfo()
@@ -51,10 +49,40 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if(loggedIn) {
+    if (loggedIn) {
       history.push('/');
     }
   }, [loggedIn])
+
+  useEffect(() => {
+    tokenCheck();
+  })
+
+  const setCardId = (cardInfo) => {
+    setcurrentCard(cardInfo);
+  }
+
+  const handleLogin = (isLogin) => {
+    setloggedIn(isLogin);
+  }
+
+  const tokenCheck = () => {
+    //проверка токена в LocalStorage
+    if (localStorage.getItem('jwt')) {
+
+      setToken(localStorage.getItem('jwt'))
+      if (token) {
+        auth.getContent(token)
+          .then((res) => {
+            if (res) {
+              const userData = res;
+              setEmail(userData.data.email)
+              handleLogin(true);
+            }
+          })
+      }
+    }
+  }
 
   const handleClickAvatar = () => {
     setEditAvatarPopupOpen(true);
@@ -167,33 +195,29 @@ function App() {
 
         <div className="App">
           <div className="page">
-            {/* <Header /> */}
-
-            {loggedIn && <Main onEditAvatar={handleClickAvatar} onEditProfile={handleClickProfile} onAddPlace={handleClickPlace}
-              onCardClick={handleCardClick} openDeleteClick={handleDeleteCardClick} cards={cards} onCardLike={handleCardLike}
-            />}
 
             <Switch>
-              {/* <ProtectedRoute
-                path="/sign-in"
-                loggedIn={loggedIn}
-                component={Login}
-              />
+              {loggedIn && <Main onEditAvatar={handleClickAvatar} onEditProfile={handleClickProfile} onAddPlace={handleClickPlace}
+                onCardClick={handleCardClick} openDeleteClick={handleDeleteCardClick} cards={cards} onCardLike={handleCardLike}
+                email={email} setToken={setToken} handleLogin={handleLogin} />}
+
               <ProtectedRoute
-                path="/sign-up"
+                exact path="/"
                 loggedIn={loggedIn}
-                component={Login}
-              /> */}
+                component={Main}
+              />
+
               <Route path="/sign-in">
                 <Login onClose={closeAllPopups} handleOpenTooltip={handleTooltip} isTooltip={isTooltip}
-                handleRegistrationStatus={handleRegistrationStatus} isRegistrationStatus={isRegistrationStatus} />
+                  handleRegistrationStatus={handleRegistrationStatus} isRegistrationStatus={isRegistrationStatus}
+                  handleLogin={handleLogin} />
               </Route>
               <Route path="/sign-up">
                 <Register onClose={closeAllPopups} handleOpenTooltip={handleTooltip} isTooltip={isTooltip}
-                 handleRegistrationStatus={handleRegistrationStatus} isRegistrationStatus={isRegistrationStatus} />
+                  handleRegistrationStatus={handleRegistrationStatus} isRegistrationStatus={isRegistrationStatus} />
               </Route>
               <Route exact path="/">
-                {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-up" />}
+                {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
               </Route>
             </Switch>
 
