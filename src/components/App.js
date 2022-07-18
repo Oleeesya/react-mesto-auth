@@ -202,7 +202,7 @@ function App() {
                 email={email} setToken={setToken} handleLogin={handleLogin} />}
 
               <ProtectedRoute
-                exact path="/"
+                exact path="/react-mesto-auth"
                 loggedIn={loggedIn}
                 component={Main}
               />
@@ -216,7 +216,7 @@ function App() {
                 <Register onClose={closeAllPopups} handleOpenTooltip={handleTooltip} isTooltip={isTooltip}
                   handleRegistrationStatus={handleRegistrationStatus} isRegistrationStatus={isRegistrationStatus} />
               </Route>
-              <Route exact path="/">
+              <Route exact path="/react-mesto-auth">
                 {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
               </Route>
             </Switch>
