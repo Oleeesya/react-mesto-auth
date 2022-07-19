@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import { HashRouter, Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import api from "../utils/API";
 import Header from './Header';
 import Main from './Main';
@@ -190,7 +190,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <currentUserContext.Provider value={currentUser}>
 
         <div className="App">
@@ -239,7 +239,7 @@ function App() {
 
 
       </currentUserContext.Provider >
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
