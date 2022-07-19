@@ -50,7 +50,7 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      history.push('/react-mesto-auth');
+      history.push('/');
     }
   }, [loggedIn])
 
@@ -202,7 +202,7 @@ function App() {
                 email={email} setToken={setToken} handleLogin={handleLogin} />}
 
               <ProtectedRoute
-                exact path="/react-mesto-auth"
+                exact path="/"
                 loggedIn={loggedIn}
                 component={Main}
               />
@@ -216,7 +216,7 @@ function App() {
                 <Register onClose={closeAllPopups} handleOpenTooltip={handleTooltip} isTooltip={isTooltip}
                   handleRegistrationStatus={handleRegistrationStatus} isRegistrationStatus={isRegistrationStatus} />
               </Route>
-              <Route exact path="/react-mesto-auth">
+              <Route exact path="/">
                 {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
               </Route>
             </Switch>

@@ -1,9 +1,3 @@
 .header__menu-mobile_status_close {
   display: none;
 }
-/* 
-@media(max-width: 880px) {
-  .header__menu-mobile_status_close{
-    display: block;
-  }
-} */

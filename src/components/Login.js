@@ -13,7 +13,7 @@ function Login(props) {
 
     const history = useHistory();
 
-    const handleSubmit = (e) => {
+    const onLogin = (e) => {
         e.preventDefault();
         if (!email || !password) {
             return;
@@ -24,7 +24,7 @@ function Login(props) {
                     setEmail();
                     setPassword();
                     props.handleLogin(true);
-                    history.push('/react-mesto-auth');
+                    history.push('/');
                 }
             })
             .catch((err) => {
@@ -37,7 +37,7 @@ function Login(props) {
         <>
             <Header title="Регистрация">
             </Header>
-            <PopupWithForm name="login" title="Вход" onSubmit={handleSubmit} buttonText="Войти">
+            <PopupWithForm name="login" title="Вход" onSubmit={onLogin} buttonText="Войти">
 
                 <input className="account__input" required id="email" name="email" type="text" placeholder="Email"
                     value={email} onChange={({ target }) => setEmail(target.value)} autoComplete="off" />

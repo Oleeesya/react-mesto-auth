@@ -16,7 +16,7 @@ function Register(props) {
         history.push('/sign-in')
     }
 
-    const handleSubmit = (e) => {
+    const onRegister = (e) => {
         e.preventDefault();
         auth.register(email, password)
             .then((res) => {
@@ -33,7 +33,7 @@ function Register(props) {
         <>
             <Header title="Войти">
             </Header>
-            <PopupWithForm name="register" title="Регистрация" onSubmit={handleSubmit} buttonText="Зарегистрироваться">
+            <PopupWithForm name="register" title="Регистрация" onSubmit={onRegister} buttonText="Зарегистрироваться">
 
                 <input className="account__input" required id="email" name="email" type="text" placeholder="Email"
                     value={email} onChange={({ target }) => setEmail(target.value)} autoComplete="off" />

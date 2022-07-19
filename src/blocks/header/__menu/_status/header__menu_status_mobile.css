@@ -1,6 +1,6 @@
 @media(max-width: 880px) {
     .header__menu_status_mobile {
-        margin-bottom: 56px;
+        top: -130px;
         text-align: center;
         left: 50%;
         transform: translate(-50%, 0%);

@@ -6,7 +6,7 @@ function Header(props) {
 
   const history = useHistory();
 
-  const handleClick = () => {
+  const onSignOut = () => {
     if (props.title == 'Войти') {
       history.push('/sign-in');
     }
@@ -45,7 +45,7 @@ function Header(props) {
       <div className={`${props.title == 'Выйти' ? 'header__menu header__menu_status_mobile' : 'header__menu'}`}>
         {props.children}
         <button className={`${props.title == 'Выйти' ? 'header__btn header__btn_recorded' : 'header__btn'}`}
-          onClick={handleClick}>{props.title}</button>
+          onClick={onSignOut}>{props.title}</button>
       </div>
       <button className={`${getButtonClass(isMobile)}`} onClick={clickMobileMenu}></button>
     </header>
