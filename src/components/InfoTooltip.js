@@ -3,7 +3,6 @@ import registered from '../img/registered.svg'
 import unregistered from '../img/registered-not.svg'
 import { useHistory } from 'react-router-dom';
 
-
 function InfoTooltip({ onClose, isRegistrationStatus, isTooltip }) {
 
     const history = useHistory();

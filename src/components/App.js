@@ -8,6 +8,7 @@ import Footer from './Footer';
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import DeletePlacePopup from "./DeletePlacePopup";
+import InfoTooltip from './InfoTooltip';
 import Login from './Login';
 import Register from './Register';
 import * as auth from '../utils/Auth.js';
@@ -80,6 +81,9 @@ function App() {
               handleLogin(true);
             }
           })
+          .catch((err) => {
+            console.log(err);
+          })
       }
     }
   }
@@ -88,8 +92,8 @@ function App() {
     setEditAvatarPopupOpen(true);
   }
 
-  const handleRegistrationStatus = () => {
-    setRegistrationStatus(true);
+  const handleRegistrationStatus = (isRegister) => {
+    setRegistrationStatus(isRegister);
   }
 
   const handleClickProfile = () => {
@@ -189,6 +193,43 @@ function App() {
       })
   }
 
+  const handleAuthorize = (password, email) => {
+    auth.authorize(password, email)
+      .then((data) => {
+        handleRegistrationStatus(false);
+        handleLogin(false);
+
+        if (data.token) {
+          handleRegistrationStatus(true);
+          handleLogin(true);
+
+          history.push('/');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        handleTooltip();
+      });
+  }
+
+  const handleRegister = (email, password) => {
+    auth.register(email, password)
+      .then((res) => {
+        handleRegistrationStatus(false);
+
+        if (res.data) {
+          handleRegistrationStatus(true);
+        }
+
+        handleTooltip();
+      })
+      .catch(err => {
+        console.log(err);
+        handleTooltip();
+      });
+
+  }
+
   return (
     <HashRouter>
       <currentUserContext.Provider value={currentUser}>
@@ -208,14 +249,13 @@ function App() {
               />
 
               <Route path="/sign-in">
-                <Login onClose={closeAllPopups} handleOpenTooltip={handleTooltip} isTooltip={isTooltip}
-                  handleRegistrationStatus={handleRegistrationStatus} isRegistrationStatus={isRegistrationStatus}
-                  handleLogin={handleLogin} />
+                <Login handleAuthorize={handleAuthorize} />
               </Route>
+
               <Route path="/sign-up">
-                <Register onClose={closeAllPopups} handleOpenTooltip={handleTooltip} isTooltip={isTooltip}
-                  handleRegistrationStatus={handleRegistrationStatus} isRegistrationStatus={isRegistrationStatus} />
+                <Register handleRegister={handleRegister} />
               </Route>
+
               <Route exact path="/">
                 {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
               </Route>
@@ -233,6 +273,8 @@ function App() {
               onCardDelete={handleCardDelete} id={currentCard}></DeletePlacePopup>
 
             <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}></EditAvatarPopup>
+
+            <InfoTooltip isRegistrationStatus={isRegistrationStatus} onClose={closeAllPopups} isTooltip={isTooltip} />
 
           </div>
         </div>
