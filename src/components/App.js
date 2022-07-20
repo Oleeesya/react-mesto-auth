@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { HashRouter, Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import api from "../utils/API";
-import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import EditProfilePopup from "./EditProfilePopup";
