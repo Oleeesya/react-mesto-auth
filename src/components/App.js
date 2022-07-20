@@ -195,7 +195,6 @@ function App() {
   const handleAuthorize = (password, email) => {
     auth.authorize(password, email)
       .then((data) => {
-        handleRegistrationStatus(false);
         handleLogin(false);
 
         if (data.token) {
@@ -207,6 +206,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        handleRegistrationStatus(false);
         handleTooltip();
       });
   }
@@ -214,7 +214,6 @@ function App() {
   const handleRegister = (email, password) => {
     auth.register(email, password)
       .then((res) => {
-        handleRegistrationStatus(false);
 
         if (res.data) {
           handleRegistrationStatus(true);
@@ -224,6 +223,7 @@ function App() {
       })
       .catch(err => {
         console.log(err);
+        handleRegistrationStatus(false);
         handleTooltip();
       });
 
