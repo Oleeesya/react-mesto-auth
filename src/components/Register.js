@@ -32,7 +32,7 @@ function Register({handleRegister}) {
                     value={password} onChange={({ target }) => setPassword(target.value)} autoComplete="off" />
 
                 <div className="register-login">
-                    <button className="register-login__btn" onClick={handleClick}>Уже зарегистрированы? Войти</button>
+                    <button className="register-login__btn" onClick={handleClick} type="button">Уже зарегистрированы? Войти</button>
                 </div>
 
             </PopupWithForm>
