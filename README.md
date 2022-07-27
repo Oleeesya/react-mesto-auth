@@ -4,4 +4,11 @@
 
 ## Ссылка на GitHub Pages:
 
-https://oleeesya.github.io/react-mesto-auth/
+https://oleeesya.github.io/react-mesto-auth/  
+
+# Инструкция по установке  
+
+git clone https://github.com/VeraChernushina/react-mesto-auth.git  
+cd react-mesto-auth  
+npm install  
+npm start  
